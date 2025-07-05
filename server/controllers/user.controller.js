@@ -1,4 +1,5 @@
-
+const { v4: uuidv4 } = require('uuid')
+const {setUser} = require('../services/auth')
 const User = require("../models/User.model");
 
 // GET Request
@@ -82,7 +83,9 @@ const findUser = async (req, res) => {
   if (user.password !== password) {
     return res.status(400).json({ error: "Invalid email or password" });
   }
-
+  const sessionId = uuidv4();
+  setUser(sessionId, user);
+  res.cookie("uid", sessionId);
   res.json({ message: "Login successful" });
 }
 // Export controllers
