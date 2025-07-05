@@ -1,0 +1,118 @@
+:root {
+  --header-color: #191970;           /* Midnight blue */
+  --sidebar-color: #1e90ff;          /* Dodger blue */
+  --footer-color: #00008b;           /* Dark blue */
+  --accent-color: #4e7cff;           /* Bright accent blue */
+  --hover-color: #6c8eff;            /* Hover tone */
+  --background-color: #f4f6fa;       /* Light background */
+  --content-bg: #ffffff;             /* White cards */
+  --text-color: #1f1f1f;             /* Dark text */
+}
+
+body {
+  margin: 0;
+  background: var(--background-color);
+  color: var(--text-color);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header full width */
+.header {
+  background: var(--header-color);
+  color: #ffffff;
+  padding: 1.2rem;
+  text-align: center;
+}
+
+/* Wrapper for sidebar and content */
+.main-content {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+/* Sidebar full height on the left */
+.sidebar {
+  width: 60px;
+  background: var(--sidebar-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1rem;
+}
+
+/* Sidebar nav */
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  margin: 1.2rem 0;
+  cursor: pointer;
+  font-size: 1.4rem;
+  color: #e9f3ff;
+  transition: color 0.2s ease;
+}
+
+.sidebar li:hover {
+  color: #ffffff;
+}
+
+/* Icon centered */
+.icon {
+  display: block;
+}
+
+/* Content area fills remaining space */
+.content {
+  flex: 1;
+  padding: 2rem;
+  background: var(--background-color);
+  overflow-y: auto;
+}
+
+/* Section headings */
+.content h2 {
+  margin-top: 0;
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 0.5rem;
+}
+
+/* Post grid layout */
+.post-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+/* Post card styling */
+.post-card {
+  background: var(--content-bg);
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.post-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+}
+
+/* Footer full width */
+.footer {
+  background: var(--footer-color);
+  color: #ffffff;
+  padding: 1rem;
+  text-align: center;
+}
+    
