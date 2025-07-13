@@ -2,7 +2,8 @@
 
   module.exports = function (req, res, next) {
     // Get token from header
-    const token = req.header("x-auth-token"); // Or 'Authorization' header with 'Bearer '
+    const token = req.header("x-auth-token");// Or 'Authorization' header with 'Bearer '
+
 
     // Check if not token
     if (!token) {
@@ -13,6 +14,7 @@
     try {
       const decoded = jwt.verify(token, process.env.JWT_SECRET); // Your secret key
       req.user = decoded.user;  
+      console.log(req.user);
       
       next();
     } catch (err) {
