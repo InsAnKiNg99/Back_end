@@ -1,12 +1,12 @@
 :root {
-  --header-color: #191970;           /* Midnight blue */
-  --sidebar-color: #1e90ff;          /* Dodger blue */
-  --footer-color: #00008b;           /* Dark blue */
-  --accent-color: #4e7cff;           /* Bright accent blue */
-  --hover-color: #6c8eff;            /* Hover tone */
-  --background-color: #f4f6fa;       /* Light background */
-  --content-bg: #ffffff;             /* White cards */
-  --text-color: #1f1f1f;             /* Dark text */
+  --header-color: #2C3E50;          /* Dark Charcoal - Strong, professional header */
+  --sidebar-color: #3498DB;         /* Vibrant Blue - Matches accent, good for navigation */
+  --footer-color: #2C3E50;          /* Dark Charcoal - Consistent with header for bottom */
+  --accent-color: #3498DB;          /* Vibrant Blue - Primary interactive element color */
+  --hover-color: #2980B9;           /* Slightly darker blue for hover effect */
+  --background-color: #ECF0F1;      /* Light Gray/Off-white - Clean main background */
+  --content-bg: #FFFFFF;            /* White cards/content areas for crispness */
+  --text-color: #34495E;            /* Dark Slate Gray - Excellent readability */
 }
 
 body {
@@ -33,6 +33,7 @@ body {
 /* Wrapper for sidebar and content */
 .main-content {
   display: flex;
+  z-index: 100;
   flex: 1;
   min-height: 0;
 }
@@ -41,6 +42,7 @@ body {
 .sidebar {
   width: 60px;
   background: var(--sidebar-color);
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -114,5 +116,9 @@ body {
   color: #ffffff;
   padding: 1rem;
   text-align: center;
+}
+a {
+  text-decoration: none;
+  color: white;
 }
     

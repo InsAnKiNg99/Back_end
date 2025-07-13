@@ -1,24 +1,20 @@
 // Homepage.jsx
 import React, { useState } from "react";
-import { FaHome, FaUserAlt, FaPenNib, FaEnvelope } from "react-icons/fa";
+import {
+  FaHome,
+  FaUserAlt,
+  FaPenNib,
+  FaEnvelope,
+  FaSignInAlt,
+  FaSignOutAlt,
+} from "react-icons/fa";
+import { useAuth } from "../services/useAuth";
+import CreatePost from "./CreatePost";
 import "./css/hompage.css";
 
 const Homepage = () => {
+  const { user, logout } = useAuth();
   const [activePage, setActivePage] = useState("home");
-  const [posts, setPosts] = useState([]);
-
-const [newTitle, setNewTitle] = useState("");
-const [newContent, setNewContent] = useState("");
-
-  const handleCreatePost = (e) => {
-  e.preventDefault();
-  if (!newTitle.trim() || !newContent.trim()) return;
-  const newPost = { title: newTitle, content: newContent };
-  setPosts([newPost, ...posts]);
-  setNewTitle("");
-  setNewContent("");
-};
-
 
   const renderContent = () => {
     switch (activePage) {
@@ -40,47 +36,19 @@ const [newContent, setNewContent] = useState("");
           </>
         );
       case "posts":
-        return (
-          <>
-            <h2>Posts</h2>
-            <form onSubmit={handleCreatePost} className="post-form">
-              <label>
-                Title:
-                <input
-                  type="text"
-                  value={newTitle}
-                  onChange={(e) => setNewTitle(e.target.value)}
-                  required
-                />
-              </label>
-              <label>
-                Content:
-                <textarea
-                  rows="4"
-                  value={newContent}
-                  onChange={(e) => setNewContent(e.target.value)}
-                  required
-                />
-              </label>
-              <button type="submit">Create Post</button>
-            </form>
-            <div className="post-grid">
-              {posts.map((post, index) => (
-                <article className="post-card" key={index}>
-                  <h3>{post.title}</h3>
-                  <p>{post.content}</p>
-                </article>
-              ))}
-            </div>
-          </>
-        );
+        return <CreatePost />;
 
       case "contact":
         return (
           <>
             <h2>Contact</h2>
-            <p>Email: example@example.com</p>
-            <p>Twitter: @example</p>
+            <p>
+              <b>Email</b>: muneerhameedb@gmail.com
+            </p>
+            <br />
+            <p>
+              <b>Discord</b>: InsAnKiNg99
+            </p>
           </>
         );
       default:
@@ -111,6 +79,29 @@ const [newContent, setNewContent] = useState("");
                 <FaEnvelope className="icon" title="Contact" />
               </li>
             </ul>
+          </nav>
+          <nav>
+            {user ? (
+              <ul>
+                <li>
+                  <a href="/">
+                    <FaSignOutAlt
+                      className="icon"
+                      title="Logout"
+                      onClick={logout}
+                    />
+                  </a>
+                </li>
+              </ul>
+            ) : (
+              <ul>
+                <li>
+                  <a href="/login">
+                    <FaSignInAlt className="icon" title="Login / Signup" />
+                  </a>
+                </li>
+              </ul>
+            )}
           </nav>
         </aside>
 

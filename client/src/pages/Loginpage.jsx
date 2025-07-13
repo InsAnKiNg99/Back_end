@@ -1,28 +1,57 @@
 import React from "react";
 import axios from "axios";
+import { useAuth } from "../services/useAuth.js";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import "./css/login.css";
+import styles from "./css/login.module.css";
 function Loginpage() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
-  const handleSubmit = (e) => {
+  const [message, setMessage] = useState("");
+  const { login: authLogin } = useAuth();
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:5000/api/users/login", {
-        email,
-        password,
-      })
-      .then((result) => {
-        console.log(result);
-        navigate("/");
-      }) // Redirect to login page})
-      .catch((e) => console.log("Login error: ",e.response?.data || e.message));
+    setMessage("");
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/users/login",
+        {
+          email,
+          password,
+        }
+      );
+      localStorage.setItem("auth-token", response.data.token);
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          _id: response.data._id,
+          username: response.data.username,
+          email: response.data.email,
+        })
+      );
+      authLogin(response.data.token, {
+        _id: response.data._id,
+        username: response.data.username,
+        email: response.data.email,
+      });
+      setMessage("Login successful!");
+      window.location.href = "/";
+    } catch (error) {
+      console.error("Login error:", error);
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
+        setMessage(error.response.data.message);
+      } else {
+        setMessage("An unexpected error occurred. Please try again.");
+      }
+    }
   };
 
-  // Show/Hide Password
   const [visible, setVisible] = useState(false);
 
   const toggleVisibility = () => {
@@ -30,50 +59,51 @@ function Loginpage() {
   };
   return (
     <div>
-      <div className="box">
+      <div className={styles.box}>
         <form onSubmit={handleSubmit}>
-          <div className="container">
+          <div className={styles.container}>
             <h1>Login</h1>
-            <div className="d-input">
+
+            <div className={styles.dInput}>
               <label htmlFor="email">
                 <strong>Email</strong>
               </label>
               <input
                 type="email"
                 name="email"
-                id="input"
-              onChange={(e) => setEmail(e.target.value)}                
-              placeholder="Enter Email"
-              required
+                className={styles.input}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter Email"
+                required
               />
-              <div className="sep" />
+              <div className={styles.sep} />
             </div>
-            <div className="d-input">
-              <label htmlFor="email">
+
+            <div className={styles.dInput}>
+              <label htmlFor="password">
                 <strong>Password</strong>
               </label>
               <input
                 type={visible ? "text" : "password"}
                 name="password"
-                id="input"
-                className="pin"
-                onChange={(e) => setPassword(e.target.value)}                
+                className={styles.pin}
+                onChange={(e) => setPassword(e.target.value)}
                 placeholder="Enter Password"
                 required
               />
-
-              <div className="sep" />
+              <div className={styles.sep} />
               <button type="button" onClick={toggleVisibility}>
                 {visible ? "🕳" : "👁"}
               </button>
-              <Link id="Link">Forget password</Link>
+              <Link className={styles.link}>Forget password</Link>
             </div>
-            <button type="submit" className="submit">
+
+            <button type="submit" className={styles.submit}>
               Login
             </button>
 
             <p>Create an account</p>
-            <Link to="/signup" className="signup">
+            <Link to="/signup" className={styles.signup}>
               Sign up
             </Link>
           </div>
