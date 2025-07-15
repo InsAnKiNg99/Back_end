@@ -1,19 +1,20 @@
 :root {
-  --header-color: #2C3E50;          /* Dark Charcoal - Strong, professional header */
-  --sidebar-color: #3498DB;         /* Vibrant Blue - Matches accent, good for navigation */
-  --footer-color: #2C3E50;          /* Dark Charcoal - Consistent with header for bottom */
-  --accent-color: #3498DB;          /* Vibrant Blue - Primary interactive element color */
-  --hover-color: #2980B9;           /* Slightly darker blue for hover effect */
-  --background-color: #ECF0F1;      /* Light Gray/Off-white - Clean main background */
-  --content-bg: #FFFFFF;            /* White cards/content areas for crispness */
-  --text-color: #34495E;            /* Dark Slate Gray - Excellent readability */
+  --header-color: #1B263B;          /* Dark Navy - Professional header */
+  --sidebar-color: #415A77;         /* Muted Steel Blue - Elegant navigation */
+  --footer-color: #1B263B;          /* Same as header for consistency */
+  --accent-color: #E0A458;          /* Warm Gold - Stylish accents and buttons */
+  --hover-color: #C98C3F;           /* Deeper Gold for hover states */
+  --background-color: #0D1B2A;      /* Almost Black - Main dark background */
+  --content-bg: #1B263B;            /* Dark Navy - Cards and content panels */
+  --text-color: lavender;            /* Light Gray - Readable text on dark */
 }
+
 
 body {
   margin: 0;
   background: var(--background-color);
   color: var(--text-color);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Candara', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .container {

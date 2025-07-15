@@ -6,7 +6,7 @@ const User = require("../models/User.model");
 
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
-    expiresIn: "1h", // Token expires in 1 hour
+    expiresIn: "1h", 
   });
 };
 
@@ -28,6 +28,7 @@ const createUser = async (req, res) => {
       password: hashedPassword,
     });
     if (user) {
+      console.log("req.user: ", req.user);
       res.status(201).json({
         _id: user._id,
         name: user.name,
@@ -49,7 +50,6 @@ const findUser = async (req, res) => {
 
   try {
     const user = await User.findOne({ email });
-    console.log("user object before sending response:", user);
 
     if (!user) {
       return res.status(400).json({ error: "Invalid email or password" });
@@ -62,9 +62,9 @@ const findUser = async (req, res) => {
     // Final response
     res.status(200).json({
       _id: user._id,
-      username: user.name,
+      name: user.name,
       email: user.email,
-      token: generateToken(user._id), // JWT
+      token: generateToken(user._id),
       message: "Login successful",
     });
   } catch (error) {

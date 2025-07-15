@@ -8,7 +8,7 @@ const createPost = async (req, res) => {
     const newPost = new Post({
       title,
       content,
-      author: req.user._id || req.user.id,
+      author: req.user.id,
     });
     console.log(newPost);
     await newPost.save();
@@ -18,16 +18,22 @@ const createPost = async (req, res) => {
   }
 };
 
-const getPost = async (req, res) => {
+const getPosts = async (req, res) => {
+  if (!req.user) {
+    return res.status(401).json({ error: "Unauthorized" });
+  }
+
   try {
-    const post = await Post.find({ author: req.user._id });
-    res.status(201).json(post);
+    const posts = await Post.find({ author: req.user.id });
+    res.status(200).json(posts);
   } catch (error) {
-    res.status(400).json(error);
+    console.error(error);
+    res.status(500).json({ error: "Server error" });
   }
 };
 
+
 module.exports = {
   createPost,
-  getPost,
+  getPosts,
 };

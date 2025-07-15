@@ -1,5 +1,5 @@
 // Homepage.jsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   FaHome,
   FaUserAlt,
@@ -9,12 +9,37 @@ import {
   FaSignOutAlt,
 } from "react-icons/fa";
 import { useAuth } from "../services/useAuth";
+import axios from "axios";
+import Aboutpage from "./Aboutpage";
+import Contactpage from "./Contactpage";
 import CreatePost from "./CreatePost";
 import "./css/hompage.css";
 
 const Homepage = () => {
   const { user, logout } = useAuth();
+  const [posts, setPosts] = useState([]);
   const [activePage, setActivePage] = useState("home");
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const res = await axios.get(
+          "http://localhost:5000/api/posts/get-post",
+          {
+            headers: {
+              "x-auth-token": localStorage.getItem("auth-token"),
+            },
+          }
+        );
+        setPosts(res.data);
+        console.log("Fetched posts:", res.data);
+
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchPosts();
+  }, []);
 
   const renderContent = () => {
     switch (activePage) {
@@ -23,33 +48,26 @@ const Homepage = () => {
           <>
             <h2>Home</h2>
             <p>Welcome to the blog. Explore posts and learn more about us.</p>
+            <div className="post-grid">
+              {posts.map((post, index) => (
+                <article className="post-card" key={post.id}>
+                  <h3>{post.title}</h3>
+                  <p>{post.content}</p>
+                </article>
+              ))}
+            </div>
           </>
         );
       case "about":
-        return (
-          <>
-            <h2>About</h2>
-            <p>
-              This blog shares insights on clean code, design, and modern
-              development practices.
-            </p>
-          </>
+        return ( 
+          <Aboutpage/>
         );
       case "posts":
         return <CreatePost />;
 
       case "contact":
         return (
-          <>
-            <h2>Contact</h2>
-            <p>
-              <b>Email</b>: muneerhameedb@gmail.com
-            </p>
-            <br />
-            <p>
-              <b>Discord</b>: InsAnKiNg99
-            </p>
-          </>
+          <Contactpage/>
         );
       default:
         return null;

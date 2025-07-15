@@ -1,15 +1,14 @@
 .create-post-container {
   max-width: 600px;
   margin: 2rem auto;
-  background: #ffffff;
+  background: #0D1B2A;
   padding: 2rem;
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .create-post-container h2 {
   margin-top: 0;
-  color: #1c2333;
+  color: lavender;
 }
 
 .post-form {
@@ -19,6 +18,7 @@
 
 .post-form label {
   margin-bottom: 1rem;
+  color: lavender;
   font-weight: 500;
 }
 
@@ -26,9 +26,12 @@
 .post-form textarea {
   width: 100%;
   padding: 0.6rem;
-  border: 1px solid #ccc;
+  color: lavender;
+  background: #1B263B;
+  border: none;
   border-radius: 6px;
   font-size: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .post-form button {

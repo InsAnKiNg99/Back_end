@@ -9,6 +9,7 @@ const CreatePost = () => {
   const [content, setContent] = useState("");
   const [message, setMessage] = useState("");
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!title.trim() || !content.trim()) {
@@ -64,14 +65,6 @@ const CreatePost = () => {
         </label>
         <button type="submit">Create Post</button>
       </form>
-      <div className="post-grid">
-        {posts.map((post, index) => (
-           <article className="post-card" key={post.id || post._id}>
-            <h3>{post.title}</h3>
-            <p>{post.content}</p>
-          </article>
-        ))}
-      </div>
     </div>
   );
 };
