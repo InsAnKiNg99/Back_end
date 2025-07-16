@@ -6,7 +6,7 @@ const User = require("../models/User.model");
 
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
-    expiresIn: "1h", 
+    expiresIn: "100h",
   });
 };
 
@@ -73,45 +73,36 @@ const findUser = async (req, res) => {
   }
 };
 
-// GET Request
-const getUsers = async (req, res) => {
-  try {
-    const users = await User.find({});
-    res.status(200).json(users);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
-
-//Get a Single Request
-const getUser = async (req, res) => {
-  if (!user) {
-    return res.status(404).json({ message: "User not found" });
-  }
-  try {
-    const { id } = req.params;
-    const user = await User.findById(id);
-    res.status(200).json(user);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
-
 // Update Request
 const updateUser = async (req, res) => {
   try {
-    const { id } = req.params;
-    const user = await User.findByIdAndUpdate(id, req.body, { new: true });
+    const { _id } = req.params; // Use params, not body
 
-    if (!user) {
-      return res.status(404).json({ message: "User not found" });
+    if (!_id || !id.toString().match(/^[0-9a-fA-F]{24}$/)) {
+      return res.status(400).json({ message: "Invalid user ID." });
     }
-    const UpdatedUser = await User.findById(id);
-    res.status(200).json(UpdatedUser);
+
+    const allowedUpdates = ["name", "email", "password"];
+    const updates = {};
+
+    for (const key of allowedUpdates) {
+      if (req.body[key] !== undefined) {
+        updates[key] = req.body[key];
+      }
+    }
+
+    const updatedUser = await User.findByIdAndUpdate(_id, updates, { new: true });
+
+    if (!updatedUser) {
+      return res.status(404).json({ message: "User not found." });
+    }
+
+    res.status(200).json(updatedUser);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
+
 
 // Delete Request
 const deleteUser = async (req, res) => {
@@ -130,8 +121,6 @@ const deleteUser = async (req, res) => {
 // Export controllers
 
 module.exports = {
-  getUsers,
-  getUser,
   createUser,
   updateUser,
   deleteUser,

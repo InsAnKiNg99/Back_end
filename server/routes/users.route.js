@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const authMiddleware = require("../middleware/authMiddleware");
 const {
   getUsers,
   getUser,
@@ -13,12 +14,8 @@ const {
 router.post("/register", createUser);
 // Find User
 router.post("/login", findUser);
-// Get Users
-router.get("/", getUsers);
-// Get User
-router.get("/:id", getUser);
 // Update User
-router.put("/:id", updateUser);
+router.put("/profile/:id",authMiddleware, updateUser);
 // Delete User
 router.delete("/:id", deleteUser);
 

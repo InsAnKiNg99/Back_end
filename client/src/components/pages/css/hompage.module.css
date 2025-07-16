@@ -1,0 +1,139 @@
+:root {
+  --header-color: #1b263b;
+  --sidebar-color: #415a77;
+  --footer-color: #1b263b;
+  --accent-color: #e0a458;
+  --hover-color: #c98c3f;
+  --background-color: #0d1b2a;
+  --content-bg: #1b263b;
+  --text-color: lavender;
+}
+
+body {
+  margin: 0;
+  background: var(--background-color);
+  color: var(--text-color);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  background: var(--header-color);
+  color: #ffffff;
+  padding: 1.2rem;
+  text-align: center;
+}
+
+.mainContent {
+  display: flex;
+  overflow-x: hidden;
+  z-index: 100;
+  flex: 1;
+  min-height: 0;
+}
+
+.sidebar {
+  width: 60px;
+  background: var(--sidebar-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  margin: 1.2rem 0;
+  cursor: pointer;
+  font-size: 1.4rem;
+}
+
+.icon {
+  display: block;
+  color: white;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+.icon:hover {
+  transform: translateY(-4px);
+  color: #0d1b2a;
+}
+
+.content {
+  flex: 1;
+  padding: 2rem;
+  background: var(--background-color);
+  overflow-y: auto;
+}
+
+.content h2 {
+  margin-top: 0;
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 0.5rem;
+}
+
+.postGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+.postCard {
+  background: var(--content-bg);
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  padding: 1.25rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.postCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 1);
+}
+
+.postCard h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.2rem;
+  color: #f1f1f1;
+}
+
+.postCard p {
+  margin: 0;
+  color: #cccccc;
+  line-height: 1.5;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.footer {
+  background: var(--footer-color);
+  color: #ffffff;
+  padding: 1rem;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+p {
+  color: var(--text-color);
+}
+
+h1 {
+  color: lavender;
+}

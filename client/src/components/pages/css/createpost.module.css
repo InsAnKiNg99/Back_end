@@ -1,0 +1,62 @@
+.createPostContainer {
+  max-width: 600px;
+  margin: 2rem auto;
+  background: #0d1b2a;
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.heading {
+  margin-top: 0;
+  border-bottom: 2px solid #c98c3f;
+  padding: 0.5rem;
+  color: lavender;
+}
+
+.postForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.postForm label {
+  margin-bottom: 1rem;
+  color: lavender;
+  font-weight: 500;
+}
+
+.input,
+.textarea {
+  width: 500px;
+  padding: 0.6rem;
+  color: lavender;
+  background: #1b263b;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.button {
+  background: #1e90ff;
+  color: #fff;
+  width: max-content;
+  height: max-content;
+  border: none;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.button:hover {
+  background: #4682b4;
+}
+
+.message {
+  margin-bottom: 1rem;
+  font-weight: 500;
+  color: #2e7d32;
+}
