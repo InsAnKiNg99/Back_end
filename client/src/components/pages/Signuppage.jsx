@@ -37,11 +37,11 @@ function Signup() {
     <div className={styles.box}>
   <form onSubmit={handleSubmit}>
     <div className={styles.container}>
-      <h1>Register</h1>
+      <h1 className={styles.label}>Register</h1>
 
       <div className={styles.dInput}>
-        <label>
-          <strong>Name</strong>
+        <label className={styles.label}>
+          Name
         </label>
         <input
           type="text"
@@ -55,8 +55,8 @@ function Signup() {
       </div>
 
       <div className={styles.dInput}>
-        <label>
-          <strong>Email</strong>
+        <label className={styles.label}>
+          Email
         </label>
         <input
           type="email"
@@ -70,8 +70,8 @@ function Signup() {
       </div>
 
       <div className={styles.dInput}>
-        <label>
-          <strong>Password</strong>
+        <label className={styles.label}>
+          Password
         </label>
         <input
           type={visible ? "text" : "password"}
@@ -83,7 +83,7 @@ function Signup() {
         />
         <div className={styles.sep} />
 
-        <button type="button" onClick={toggleVisibility}>
+        <button type="button" onClick={toggleVisibility} className={styles.show}>
           {visible ? "🕳" : "👁"}
         </button>
 
@@ -94,7 +94,7 @@ function Signup() {
         Register
       </button>
 
-      <p>Already have an account</p>
+      <p className={styles.label}>Already have an account</p>
       <Link to="/login" className={styles.login}>
         Login
       </Link>

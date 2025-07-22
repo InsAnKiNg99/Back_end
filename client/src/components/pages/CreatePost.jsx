@@ -42,7 +42,7 @@ const CreatePost = () => {
 
   return (
     <div className={styles.createPostContainer}>
-  <h2 className={styles.heading}>Create New Post</h2>
+  <h3 className={styles.heading}>Create New Post</h3>
   <form onSubmit={handleSubmit} className={styles.postForm}>
     <label>
       Title:

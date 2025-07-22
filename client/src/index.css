@@ -1,11 +1,37 @@
+:root {
+  --header-color: #1b263b;
+  --sidebar-color: #415a77;
+  --footer-color: #1b263b;
+  --accent-color: #e0a458;
+  --hover-color: #c98c3f;
+  --background-color: #0d1b2a;
+  --content-bg: #1b263b;
+  --text-color: lavender;
+}
+
+:root {
+  --heading-font: 'Helvetica', 'Arial', sans-serif;
+  --body-font: 'Helvetica', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --button-font: 'Cascadia Code', monospace;
+}
+
+/* Apply body font to everything by default */
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--body-font);
 }
+
+/* Override heading font */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font);
+}
+
+/* Button font override */
+button {
+  font-family: var(--button-font);
+  font-weight: bold;
+}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

@@ -61,11 +61,11 @@ function Loginpage() {
       <div className={styles.box}>
         <form onSubmit={handleSubmit}>
           <div className={styles.container}>
-            <h1>Login</h1>
+            <h1 className={styles.label}>Login</h1>
 
             <div className={styles.dInput}>
-              <label htmlFor="email">
-                <strong>Email</strong>
+              <label htmlFor="email" className={styles.label}>
+                Email
               </label>
               <input
                 type="email"
@@ -79,8 +79,8 @@ function Loginpage() {
             </div>
 
             <div className={styles.dInput}>
-              <label htmlFor="password">
-                <strong>Password</strong>
+              <label htmlFor="password" className={styles.label}>
+                Password
               </label>
               <input
                 type={visible ? "text" : "password"}
@@ -101,7 +101,7 @@ function Loginpage() {
               Login
             </button>   
               {message && <p className="message">{message}</p>}
-            <p>Create an account</p>
+            <p className={styles.label}>Create an account</p>
             <Link to="/signup" className={styles.signup}>
               Sign up
             </Link>

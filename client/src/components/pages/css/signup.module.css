@@ -40,7 +40,6 @@ form {
 .dInput {
   display: flex;
   flex-direction: column;
-  gap: 10px;
   justify-content: center;
   align-items: stretch;
 }
@@ -50,6 +49,7 @@ form {
   height: 27px;
   font-size: 18px;
   background-color: lavender;
+  color: #000;
   border: 0;
   border-radius: 5px;
   padding-left: 10px;
@@ -69,6 +69,7 @@ form {
   height: 27px;
   font-size: 18px;
   background-color: lavender;
+  color: #000;
   border: 0;
   border-radius: 5px;
   padding-left: 10px;
@@ -123,6 +124,23 @@ button {
   width: 40px;
   font-size: 26px;
   cursor: pointer;
+}
+.show{
+  background-color: lavender;
+  color: #000;
+  border: none;
+  height: fit-content;
+  width: 40px;
+  font-size: 26px;
+  cursor: pointer;
+}
+.show:hover{
+  background-color: lavender
+}
+.label{ 
+  color: #1B263B;
+  font-weight: 600;
+  
 }
 
 .link {

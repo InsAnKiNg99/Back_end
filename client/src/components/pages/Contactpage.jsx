@@ -4,7 +4,7 @@ function Contactpage() {
   return (
     <div>
       {" "}
-      <h2>Contact</h2>
+      <h3>Contact</h3>
       <p>
         <b>Email</b>: muneerhameedb@gmail.com
       </p>

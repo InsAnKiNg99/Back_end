@@ -6,6 +6,8 @@ import Homepage from "./components/pages/Homepage.jsx";
 import Contactpage from "./components/pages/Contactpage.jsx";
 import Aboutpage from "./components/pages/Aboutpage.jsx";
 import CreatePost from "./components/pages/CreatePost.jsx";
+import Dashboard from "./components/pages/Dashboard.jsx";
+import Editpostpage from "./components/pages/Editpostpage.jsx";
 import ProtectedRoute from "./components/services/protectedRoute.js";
 
 function App() {
@@ -17,6 +19,8 @@ function App() {
             <Route path="/" element={<Homepage />} />
           </Route>
           <Route path="/createpost" element={<CreatePost />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/edit-post" element={<Editpostpage/>}/>
           <Route path="/contact" element={<Contactpage />} />
           <Route path="/about" element={<Aboutpage />} />
           <Route path="/login" element={<Loginpage />} />

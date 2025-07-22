@@ -15,8 +15,8 @@ router.post("/register", createUser);
 // Find User
 router.post("/login", findUser);
 // Update User
-router.put("/profile/:id",authMiddleware, updateUser);
+router.put("/profile",authMiddleware, updateUser);
 // Delete User
-router.delete("/:id", deleteUser);
+router.delete("/delete", authMiddleware, deleteUser);
 
 module.exports = router;

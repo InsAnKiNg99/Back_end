@@ -50,6 +50,7 @@ form {
   height: 27px;
   font-size: 18px;
   background-color: lavender;
+  color: #000 ;
   border: 0;
   border-radius: 5px;
   padding-left: 10px;
@@ -66,8 +67,9 @@ form {
 h1{
   color: #1B263B;
 }
-label{ 
+.label{ 
   color: #1B263B;
+  font-weight: 600;
   
 }
 p{
@@ -80,6 +82,7 @@ p{
   height: 27px;
   font-size: 18px;
   background-color: lavender;
+  color: #000;
   border: 0;
   border-radius: 5px;
   padding-left: 10px;
@@ -136,6 +139,9 @@ p{
   width: 40px;
   font-size: 26px;
   cursor: pointer;
+}
+.show:hover{
+  background-color: lavender
 }
 
 .link {
